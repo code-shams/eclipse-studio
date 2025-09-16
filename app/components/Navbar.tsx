@@ -16,12 +16,12 @@ const Navbar = async () => {
                     {session && session?.user ? (
                         <>
                             <Link href="/startup/create">Create</Link>
-                            <form action={
-                                async () => {
+                            <form
+                                action={async () => {
                                     "use server";
-                                    await signOut();
-                                }
-                            }>
+                                    await signOut({ redirectTo: "/" });
+                                }}
+                            >
                                 <button type="submit">Signout</button>
                             </form>
                             <Link href={`user/${session?.id}`}>
@@ -29,14 +29,28 @@ const Navbar = async () => {
                             </Link>
                         </>
                     ) : (
-                        <form
-                            action={async () => {
-                                "use server";
-                                await signIn("github");
-                            }}
-                        >
-                            <button type="submit">Signin with GitHub</button>
-                        </form>
+                        <>
+                            <form
+                                action={async () => {
+                                    "use server";
+                                    await signIn("github");
+                                }}
+                            >
+                                <button type="submit">
+                                    Signin with GitHub
+                                </button>
+                            </form>
+                            <form
+                                action={async () => {
+                                    "use server";
+                                    await signIn("google");
+                                }}
+                            >
+                                <button type="submit">
+                                    Signin with Google
+                                </button>
+                            </form>
+                        </>
                     )}
                 </div>
             </nav>
