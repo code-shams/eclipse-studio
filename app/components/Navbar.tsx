@@ -6,10 +6,11 @@ const Navbar = async () => {
 
     return (
         <header className="px-5 py-3 bg-white shadow-sm font-work-sans">
-            <nav className="flex justify-between items-center">
+            <nav className="flex-between">
                 <Link href="/" className="flex items-center text-black">
-                    <span>Eclipse</span>
-                    <span>Studio</span>
+                    <span className="text-primary font-bold uppercase text-lg">
+                        Eclipse
+                    </span>
                 </Link>
 
                 <div className="text-black flex items-center gap-5">
